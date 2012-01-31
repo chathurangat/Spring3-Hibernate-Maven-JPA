@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+
+    <display-name>Spring3-SpringModules-Annotation based Data Validation-Example</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- The  log4j.xm file should be declared in the web.xml file as below. this file will will contain the required configuration for both log4j and slf4j frameworks -->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/resources/log4j.xml</param-value>
+    </context-param>
+
+    <!-- In Spring MVC, is not required to map servlet classes for each and every url pattern and they are handled by the Dispatcher Servlet.
+This is the FrontController Servlet in the Spring MVC -->
+    <servlet>
+        <servlet-name>registration</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>registration</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
+</web-app>

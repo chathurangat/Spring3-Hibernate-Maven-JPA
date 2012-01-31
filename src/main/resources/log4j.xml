@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%x] %c{1} %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="FileAppender" class="org.apache.log4j.FileAppender">
+        <!-- the log file will be available inside the logs directory of the tomcat installation. the name of the log file is sample.log -->
+        <param name="File" value="../logs/sample.log"/>
+        <!-- the log will contains the log messages started from the INFO level..(info or less) -->
+                <param name="Threshold" value="INFO"/>
+     <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%x] %c{1} %m%n" />
+        </layout>
+    </appender>
+
+   <root>
+       <level value="DEBUG" />
+        <appender-ref ref="ConsoleAppender" />
+        <appender-ref ref="FileAppender" />
+    </root>
+
+</log4j:configuration>
