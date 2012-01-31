@@ -24,6 +24,7 @@
             <layout>default</layout>
         </repository>
 
+
     </repositories>
 
 
@@ -75,7 +76,7 @@
         <dependency>
             <groupId>org.springmodules</groupId>
             <artifactId>spring-modules-validation</artifactId>
-            <version>0.8a</version>
+            <version>0.9</version>
         </dependency>
 
         <!--this dependency is also required for the annotation based validation-->
@@ -90,6 +91,22 @@
             <artifactId>commons-collections</artifactId>
             <version>3.1</version>
         </dependency>
+
+        <!-- Hibernate Dependencies  start-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>3.6.3.Final</version>
+        </dependency>
+
+        <!-- Hibernate c3p0 connection pool -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>3.6.3.Final</version>
+        </dependency>
+
+       <!-- Hibernate Dependencies  ends<-->
 
     </dependencies>
 
