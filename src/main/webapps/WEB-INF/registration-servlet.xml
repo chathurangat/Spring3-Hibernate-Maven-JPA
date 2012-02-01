@@ -14,6 +14,7 @@
     <context:component-scan base-package="org.convey.registration" />
 
     <import resource="applicationContext.xml"/>
+    <import resource="hibernate-spring-bean-declaration.xml"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
@@ -43,45 +44,10 @@
 
     <bean id="userAdministrationController" class="org.convey.registration.controller.UserAdministration"/>
 
- <bean id="configurationLoader"
-         class="org.springmodules.validation.bean.conf.loader.annotation.AnnotationBeanValidationConfigurationLoader"/>
- <bean id="validator" class="org.springmodules.validation.bean.BeanValidator"
-         p:configurationLoader-ref="configurationLoader"/>
+    <bean id="configurationLoader"
+          class="org.springmodules.validation.bean.conf.loader.annotation.AnnotationBeanValidationConfigurationLoader"/>
 
-
-
-    <!-- Hibernate Configuration start -->
-
-    	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		p:location="/WEB-INF/jdbc.properties" />
-
-<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
-				 p:dataSource-ref="dataSource"
-				 p:configLocation="${hibernate.config}"
-				 p:packagesToScan="org.convey.registration"/>
-
-	<!-- Declare a datasource that has pooling capabilities-->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-				destroy-method="close"
-				p:driverClass="${jdbc.driverClassName}"
-				p:jdbcUrl="${jdbc.databaseurl}"
-				p:user="${jdbc.username}"
-				p:password="${jdbc.password}"
-				p:acquireIncrement="5"
-				p:idleConnectionTestPeriod="60"
-				p:maxPoolSize="100"
-				p:maxStatements="50"
-				p:minPoolSize="10" />
-
-	<tx:annotation-driven />
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-    <!-- Hibernate Configuration ends -->
-
+    <bean id="validator" class="org.springmodules.validation.bean.BeanValidator"
+          p:configurationLoader-ref="configurationLoader"/>
 
 </beans>
